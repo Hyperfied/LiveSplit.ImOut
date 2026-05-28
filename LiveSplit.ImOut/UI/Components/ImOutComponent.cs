@@ -7,6 +7,9 @@ using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Windows.Forms;
 using System.Xml;
+using System.IO;
+using System.Diagnostics;
+using LiveSplit.TimeFormatters;
 
 namespace LiveSplit.UI.Components
 {
@@ -15,6 +18,10 @@ namespace LiveSplit.UI.Components
         protected ImOutControl InternalComponent { get; set; }
         public ImOutSettings Settings { get; set; }
         protected LiveSplitState State { get; set; }
+        protected DeltaTimeFormatter TimeFormatter { get; set; }
+        private ImOutGenerator ImageGen { get; set; }
+
+        protected bool ControlStateValid { get; set; }
 
         public override string ComponentName => "I'm Out!";
 
@@ -30,10 +37,70 @@ namespace LiveSplit.UI.Components
 
         public ImOutComponent(LiveSplitState state) : this(state, CreateImageControl()) { }
 
-        public ImOutComponent(LiveSplitState state, Control image) : base(state, image, ex => ErrorCallback(state.Form, ex)) 
+        public ImOutComponent(LiveSplitState state, ImOutControl image) : base(state, image, ex => ErrorCallback(state.Form, ex)) 
         {
+            InternalComponent = image;
             State = state;
             Settings = new ImOutSettings();
+            TimeFormatter = new DeltaTimeFormatter();
+            ImageGen = new ImOutGenerator();
+            ControlStateValid = false;
+
+            state.OnStart += state_OnStart;
+            state.OnSplit += state_OnSplitChange;
+            state.OnUndoSplit += state_OnSplitChange;
+            state.OnSkipSplit += state_OnSplitChange;
+            state.OnReset += state_OnReset;
+        }
+
+        private void state_OnStart(object sender, EventArgs e)
+        {
+
+            
+            ControlStateValid = false;
+        }
+
+        private void state_OnSplitChange(object sender, EventArgs e)
+        {
+            ControlStateValid = false;
+        }
+
+        private void state_OnReset(object sender, TimerPhase e)
+        {
+            ControlStateValid = false;
+        }
+
+        public override void Update(IInvalidator invalidator, LiveSplitState state, float width, float height, LayoutMode mode)
+        {
+            if (!ControlStateValid)
+            {
+                var currentSplitIndex = state.CurrentSplitIndex;
+                TimingMethod timingMethod = state.CurrentTimingMethod;
+                var comparison = state.CurrentComparison;
+                if (currentSplitIndex > 0)
+                {
+                    var prevSplit = state.Run[currentSplitIndex - 1];
+                    TimeSpan? deltaTime = prevSplit.SplitTime[timingMethod] - prevSplit.Comparisons[comparison][timingMethod];
+
+                    if (deltaTime.HasValue)
+                    {
+                        ImageGen.DrawImage(TimeFormatter.Format(deltaTime));
+                        var seconds = deltaTime.Value.TotalSeconds;
+
+                        InternalComponent.SetControl(ImOutControl.ImageState.Running);
+                    }
+                    else
+                    {
+                        InternalComponent.SetControl(ImOutControl.ImageState.Unknown);
+                    }
+                }
+                else
+                {
+                    InternalComponent.SetControl(ImOutControl.ImageState.Unknown);
+                }
+
+                ControlStateValid = true;
+            }
         }
 
         private static void ErrorCallback(Form form, Exception ex)
@@ -73,8 +140,6 @@ namespace LiveSplit.UI.Components
         private static ImOutControl CreateImageControl()
         {
             var control = new ImOutControl();
-
-            control.Image = Image.FromFile(@"C:\Users\Lewis\Downloads\im out.png");
 
             return control;
         }

@@ -12,6 +12,8 @@
     <TargetFrameworkVersion>v4.8.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -52,6 +54,7 @@
       <DependentUpon>ImOutControl.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\Components\ImOutFactory.cs" />
+    <Compile Include="UI\Components\ImOutGenerator.cs" />
     <Compile Include="UI\Components\ImOutSettings.cs">
       <SubType>UserControl</SubType>
     </Compile>
