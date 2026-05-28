@@ -44,13 +44,19 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UI\Components\ResetChanceComponent.cs" />
-    <Compile Include="UI\Components\ResetChanceFactory.cs" />
-    <Compile Include="UI\Components\ResetChanceSettings.cs">
+    <Compile Include="UI\Components\ImOutComponent.cs" />
+    <Compile Include="UI\Components\ImOutControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UI\Components\ResetChanceSettings.Designer.cs">
-      <DependentUpon>ResetChanceSettings.cs</DependentUpon>
+    <Compile Include="UI\Components\ImOutControl.Designer.cs">
+      <DependentUpon>ImOutControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Components\ImOutFactory.cs" />
+    <Compile Include="UI\Components\ImOutSettings.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Components\ImOutSettings.Designer.cs">
+      <DependentUpon>ImOutSettings.cs</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -64,8 +70,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="UI\Components\ResetChanceSettings.resx">
-      <DependentUpon>ResetChanceSettings.cs</DependentUpon>
+    <EmbeddedResource Include="UI\Components\ImOutControl.resx">
+      <DependentUpon>ImOutControl.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
