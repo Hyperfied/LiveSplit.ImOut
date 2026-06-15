@@ -56,7 +56,7 @@ namespace LiveSplit.UI.Components
                     // Reset transform
                     g.ResetTransform();
 
-                    bitmap.Save("Resources/live" + currentBuffer.ToString() + ".png", ImageFormat.Png);
+                    bitmap.Save("Resources/imout" + currentBuffer.ToString() + ".png", ImageFormat.Png);
                 }
             }
             else

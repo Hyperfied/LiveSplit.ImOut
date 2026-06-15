@@ -31,7 +31,7 @@ namespace LiveSplit.UI.Components
 
             imagePaths = new string[2];
             imagePaths[0] = "Resources/unsure.jpg";
-            imagePaths[1] = "Resources/live";
+            imagePaths[1] = "Resources/imout";
 
         }
 
