@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -50,7 +51,7 @@ namespace LiveSplit.UI.Components
 
         private void ImOutControl_Load(object sender, EventArgs e)
         {
-            BackgroundImage = Image.FromFile(GetCurrentImage());
+            pbDisplay.Image = Image.FromFile(GetCurrentImage());
         }
 
         public void SetControl(ImageState state) 
@@ -63,8 +64,15 @@ namespace LiveSplit.UI.Components
 
             State = state;
 
-            BackgroundImage.Dispose();
-            BackgroundImage = Image.FromFile(GetCurrentImage());
+            if (pbDisplay.Image != null) pbDisplay.Image.Dispose();
+            pbDisplay.Image = Image.FromFile(GetCurrentImage());
         }
+
+        public void PrintDebug()
+        {
+            Debug.WriteLine("Component Size: " + Size.Height + " " + Size.Width);
+            Debug.WriteLine("PB Size: " + pbDisplay.Size.Height + " " + pbDisplay.Size.Width);
+        }
+
     }
 }

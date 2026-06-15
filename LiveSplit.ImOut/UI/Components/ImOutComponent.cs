@@ -101,6 +101,8 @@ namespace LiveSplit.UI.Components
 
                 ControlStateValid = true;
             }
+
+            InternalComponent.PrintDebug();
         }
 
         private static void ErrorCallback(Form form, Exception ex)

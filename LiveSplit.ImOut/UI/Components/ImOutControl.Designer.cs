@@ -28,7 +28,20 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.pbDisplay = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pbDisplay)).BeginInit();
             this.SuspendLayout();
+            // 
+            // pbDisplay
+            // 
+            this.pbDisplay.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pbDisplay.InitialImage = null;
+            this.pbDisplay.Location = new System.Drawing.Point(0, 0);
+            this.pbDisplay.Name = "pbDisplay";
+            this.pbDisplay.Size = new System.Drawing.Size(368, 210);
+            this.pbDisplay.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbDisplay.TabIndex = 0;
+            this.pbDisplay.TabStop = false;
             // 
             // ImOutControl
             // 
@@ -36,14 +49,18 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.Controls.Add(this.pbDisplay);
             this.MinimumSize = new System.Drawing.Size(50, 50);
             this.Name = "ImOutControl";
-            this.Size = new System.Drawing.Size(50, 50);
+            this.Size = new System.Drawing.Size(368, 210);
             this.Load += new System.EventHandler(this.ImOutControl_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.pbDisplay)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
+
+        private System.Windows.Forms.PictureBox pbDisplay;
     }
 }
