@@ -85,6 +85,9 @@
     <EmbeddedResource Include="UI\Components\ImOutControl.resx">
       <DependentUpon>ImOutControl.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UI\Components\ImOutSettings.resx">
+      <DependentUpon>ImOutSettings.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
