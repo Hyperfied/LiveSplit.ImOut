@@ -153,6 +153,7 @@
             this.rdoSeconds.TabStop = true;
             this.rdoSeconds.Text = "Seconds";
             this.rdoSeconds.UseVisualStyleBackColor = true;
+            this.rdoSeconds.CheckedChanged += new System.EventHandler(this.rdoSeconds_CheckedChanged);
             // 
             // rdoTenths
             // 
@@ -165,6 +166,7 @@
             this.rdoTenths.TabStop = true;
             this.rdoTenths.Text = "Tenths";
             this.rdoTenths.UseVisualStyleBackColor = true;
+            this.rdoTenths.CheckedChanged += new System.EventHandler(this.rdoTenths_CheckedChanged);
             // 
             // rdoHundredths
             // 
@@ -177,6 +179,7 @@
             this.rdoHundredths.TabStop = true;
             this.rdoHundredths.Text = "Hundredths";
             this.rdoHundredths.UseVisualStyleBackColor = true;
+            this.rdoHundredths.CheckedChanged += new System.EventHandler(this.rdoHundredths_CheckedChanged);
             // 
             // rdoMilliseconds
             // 
@@ -189,6 +192,7 @@
             this.rdoMilliseconds.TabStop = true;
             this.rdoMilliseconds.Text = "Milliseconds";
             this.rdoMilliseconds.UseVisualStyleBackColor = true;
+            this.rdoMilliseconds.CheckedChanged += new System.EventHandler(this.rdoMilliseconds_CheckedChanged);
             // 
             // ImOutSettings
             // 
@@ -201,6 +205,7 @@
             this.Name = "ImOutSettings";
             this.Padding = new System.Windows.Forms.Padding(7);
             this.Size = new System.Drawing.Size(476, 388);
+            this.Load += new System.EventHandler(this.ImOutSettings_Load);
             this.tblComparison.ResumeLayout(false);
             this.tblComparison.PerformLayout();
             this.gbDeltaAccuracy.ResumeLayout(false);

@@ -41,7 +41,10 @@ namespace LiveSplit.UI.Components
         {
             InternalComponent = image;
             State = state;
-            Settings = new ImOutSettings();
+            Settings = new ImOutSettings()
+            {
+                CurrentState = state
+            };
             TimeFormatter = new DeltaTimeFormatter();
             ImageGen = new ImOutGenerator();
             ControlStateValid = false;
