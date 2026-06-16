@@ -68,11 +68,11 @@ namespace LiveSplit.UI.Components
             pbDisplay.Image = Image.FromFile(GetCurrentImage());
         }
 
-        public void PrintDebug()
+        /*public void PrintDebug()
         {
             Debug.WriteLine("Component Size: " + Size.Height + " " + Size.Width);
             Debug.WriteLine("PB Size: " + pbDisplay.Size.Height + " " + pbDisplay.Size.Width);
-        }
+        }*/
 
     }
 }

@@ -79,11 +79,26 @@ namespace LiveSplit.UI.Components
             {
                 var currentSplitIndex = state.CurrentSplitIndex;
                 TimingMethod timingMethod = state.CurrentTimingMethod;
-                var comparison = state.CurrentComparison;
+
+                var comparison = Settings.Comparison;
+                if (comparison == "Current Comparison")
+                {
+                    comparison = state.CurrentComparison;
+                }
+
+                TimeFormatter.Accuracy = Settings.DeltaAccuracy;
+                TimeFormatter.DropDecimals = Settings.DropDecimal;
+
                 if (currentSplitIndex > 0)
                 {
                     var prevSplit = state.Run[currentSplitIndex - 1];
-                    TimeSpan? deltaTime = prevSplit.SplitTime[timingMethod] - prevSplit.Comparisons[comparison][timingMethod];
+                    var splitTime = prevSplit.SplitTime[timingMethod];
+                    var comparedTime = prevSplit.Comparisons[comparison][timingMethod];
+                    TimeSpan? deltaTime = splitTime - comparedTime;
+
+                    Debug.WriteLine("Split Time: " + splitTime.ToString());
+                    Debug.WriteLine("Compared Time: " + comparedTime.ToString());
+                    Debug.WriteLine("Comparison: " + comparison);
 
                     if (deltaTime.HasValue)
                     {
@@ -105,7 +120,7 @@ namespace LiveSplit.UI.Components
                 ControlStateValid = true;
             }
 
-            InternalComponent.PrintDebug();
+            //InternalComponent.PrintDebug();
         }
 
         private static void ErrorCallback(Form form, Exception ex)

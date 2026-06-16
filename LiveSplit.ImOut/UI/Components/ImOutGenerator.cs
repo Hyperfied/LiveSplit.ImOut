@@ -3,6 +3,7 @@ using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
 using System.Drawing.Text;
+using System.IO;
 using System.Linq;
 
 namespace LiveSplit.UI.Components
@@ -11,7 +12,6 @@ namespace LiveSplit.UI.Components
     {
         private string outImage = "Resources/out.png";
         private string inImage = "Resources/in.png";
-        private string unsureImage = "Resources/unsure.jpg";
 
         private Color red = Color.FromArgb(245, 5, 4);
         private Color green = Color.FromArgb(81, 246, 60);
@@ -31,7 +31,6 @@ namespace LiveSplit.UI.Components
             Brush brush;
             string image;
 
-            
             if (formattedTime.StartsWith("+"))
             {
                 Debug.WriteLine("Positive");
@@ -83,7 +82,7 @@ namespace LiveSplit.UI.Components
                     // Reset transform
                     g.ResetTransform();
 
-                    bitmap.Save("Resources/live" + currentBuffer.ToString() + ".png", ImageFormat.Png);
+                    bitmap.Save("Resources/imout" + currentBuffer.ToString() + ".png", ImageFormat.Png);
                 }
             }
 
