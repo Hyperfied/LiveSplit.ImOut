@@ -1,0 +1,12 @@
+﻿<updates>
+	<update version="1.0.0">
+		<files>
+			<file path="Components/LiveSplit.ImOut.dll" status="changed" />
+		</files>
+		<changelog>
+			<change>
+				It's out!
+			</change>
+		</changelog>
+	</update>
+</updates>
