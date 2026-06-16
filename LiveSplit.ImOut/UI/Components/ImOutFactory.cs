@@ -19,9 +19,9 @@ namespace LiveSplit.UI.Components
 
         public string UpdateName => ComponentName;
 
-        public string XMLURL => UpdateURL + "";
+        public string XMLURL => UpdateURL + "Components/update.LiveSplit.ImOut.xml";
 
-        public string UpdateURL => "";
+        public string UpdateURL => "https://raw.githubusercontent.com/Hyperfied/LiveSplit.ImOut/main/LiveSplit.ImOut/";
 
         public Version Version => Version.Parse("1.0.0");
     }
